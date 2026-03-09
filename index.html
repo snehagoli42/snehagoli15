@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pay & Trust: Consumer Awareness Program</title>
+
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #6a11cb;
+    --secondary: #2575fc;
+    --accent: #ff9800;
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --success: #28a745;
+    --danger: #dc3545;
+    --dark: #1a1a2e;
+}
+
+body {
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+    background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color:white;
+    text-align:center;
+    padding:120px 20px 60px;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(106, 17, 203, 0.92), rgba(37, 117, 252, 0.9));
+    z-index: 0;
+}
+
+header h1, header p { position: relative; z-index: 1; }
+header h1 { font-size: 40px; margin-bottom:10px; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+header p { font-size:18px; opacity:0.9; }
+
+/* TOP TEXT NAVIGATION - 3D ENHANCED */
+.corner-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center;
+    gap: 12px;
+    z-index: 999;
+    border-radius: 0; 
+    overflow-x: auto; 
+    perspective: 1000px;
+}
+
+.corner-nav-item {
+    width: auto;
+    height: auto;
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: #f4f6fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    flex-shrink: 0; 
+    border: 2px solid transparent;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transform-style: preserve-3d;
+}
+
+.corner-nav-item:hover {
+    background: white;
+    color: var(--primary);
+    transform: translateY(-3px) rotateX(10deg) scale(1.05);
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.25);
+}
+
+.corner-nav-item.active-icon {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    box-shadow: 0 10px 25px rgba(106, 17, 203, 0.5);
+    border-color: rgba(255,255,255,0.5);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* SECTIONS */
+section {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    padding: 120px 20px 60px;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+section.active-tab-section {
+    display: flex;
+    animation: tab3DEnter 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transform-origin: top center;
+}
+
+@keyframes tab3DEnter {
+    0% {
+        opacity: 0;
+        transform: perspective(1500px) rotateX(-20deg) translateY(-50px) scale(0.9);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1500px) rotateX(0deg) translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* BACKGROUNDS */
+#home { background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); }
+#home::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(106, 17, 203, 0.92), rgba(37, 117, 252, 0.9)); z-index: 0; }
+
+#research { background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); }
+#research::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(26, 26, 46, 0.94), rgba(37, 117, 252, 0.9)); z-index: 0; }
+
+#gallery { background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); }
+#gallery::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(106, 17, 203, 0.92), rgba(255, 152, 0, 0.8)); z-index: 0; }
+
+#tips { background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); }
+#tips::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(40, 167, 69, 0.85)); z-index: 0; }
+
+#survey { background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); }
+#survey::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(37, 117, 252, 0.92), rgba(106, 17, 203, 0.9)); z-index: 0; }
+
+#forum { background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); }
+#forum::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(106, 17, 203, 0.92), rgba(37, 117, 252, 0.9)); z-index: 0; }
+
+#resources { background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); }
+#resources::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(17, 153, 142, 0.88)); z-index: 0; }
+
+#contact { background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); }
+#contact::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(106, 17, 203, 0.92), rgba(37, 117, 252, 0.9)); z-index: 0; }
+
+.section-heading h2 { color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.section-heading p { color: rgba(255,255,255,0.9); }
+.floating-card h2, .card h2, .hex-main-title { color: var(--dark); text-shadow: none; }
+
+/* 3D AURA BACKGROUND EFFECT */
+.aura-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at 50% 50%, rgba(106, 17, 203, 0.1), transparent 60%);
+    z-index: 0;
+    animation: auraPulse 8s infinite ease-in-out;
+}
+
+.aura-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+    opacity: 0.6;
+    animation: floatOrb 15s infinite ease-in-out;
+}
+
+.orb-1 { width: 300px; height: 300px; background: var(--primary); top: 20%; left: 10%; }
+.orb-2 { width: 400px; height: 400px; background: var(--secondary); bottom: 10%; right: 5%; animation-delay: -5s; }
+.orb-3 { width: 250px; height: 250px; background: var(--accent); top: 40%; right: 20%; opacity: 0.3; animation-delay: -10s; }
+
+@keyframes auraPulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.1); } }
+@keyframes floatOrb { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(20px, 50px); } 50% { transform: translate(-30px, 20px); } 75% { transform: translate(30px, -30px); } }
+
+/* CONTENT CONTAINER */
+.section-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 1;
+    perspective: 1000px; 
+}
+
+/* CENTERED HEADINGS */
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section-heading h2 {
+    font-size: 36px;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.section-heading h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+.section-heading p { margin-top: 15px; font-size: 16px; }
+
+/* 3D CARDS */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.card:hover {
+    transform: translateY(-10px) rotateX(2deg);
+    box-shadow: 0 25px 50px rgba(106, 17, 203, 0.15);
+}
+
+h2 { color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+ul { line-height: 1.9; }
+
+/* BUTTONS */
+.btn {
+    background: linear-gradient(135deg, var(--accent), #ff5722);
+    border:none; padding:14px 28px; color:white; border-radius:35px;
+    cursor:pointer; font-size:16px; box-shadow:0 8px 18px rgba(0,0,0,0.15);
+    text-decoration: none; display:inline-block; transition: 0.3s;
+}
+.btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(255, 152, 0, 0.3); }
+
+@keyframes fadeIn { from {opacity:0; transform: translateY(30px);} to {opacity:1; transform: translateY(0);} }
+
+/* HOME TAB STYLING - ENHANCED */
+.hero-container { text-align: center; margin-bottom: 50px; perspective: 1000px; }
+.scene-3d { width: 300px; height: 300px; margin: 0 auto; position: relative; transform-style: preserve-3d; animation: rotateScene 20s infinite linear; }
+.trust-core { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: linear-gradient(135deg, #fff, #f0f4ff); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 60px rgba(106, 17, 203, 0.4); border: 2px solid rgba(255,255,255,0.8); z-index: 2; }
+.trust-core i { font-size: 40px; color: var(--primary); margin-bottom: 5px; }
+.trust-core span { font-weight: bold; color: var(--secondary); font-size: 14px; }
+.orbit-ring { position: absolute; top: 50%; left: 50%; border: 1px dashed rgba(106, 17, 203, 0.3); border-radius: 50%; transform-style: preserve-3d; }
+.orbit-1 { width: 260px; height: 260px; margin-left: -130px; margin-top: -130px; transform: rotateX(70deg); }
+.orbit-2 { width: 260px; height: 260px; margin-left: -130px; margin-top: -130px; transform: rotateX(70deg) rotateY(20deg); }
+.orbit-item { position: absolute; width: 70px; height: 70px; background: white; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border: 3px solid; transform-style: preserve-3d; }
+.orbit-item i { font-size: 24px; margin-bottom: 2px; }
+.orbit-item span { font-size: 10px; font-weight: bold; }
+.cod-item { top: 0; left: 50%; margin-left: -35px; margin-top: -35px; border-color: var(--success); color: var(--success); transform: rotateX(-70deg); }
+.prepaid-item { bottom: 0; left: 50%; margin-left: -35px; margin-bottom: -35px; border-color: var(--secondary); color: var(--secondary); transform: rotateX(-70deg) rotateY(180deg); }
+@keyframes rotateScene { from { transform: rotateY(0deg) rotateX(15deg); } to { transform: rotateY(360deg) rotateX(15deg); } }
+
+.intro-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
+
+.scroll-animate { opacity: 0; transform: translateY(60px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.scroll-animate.is-visible { opacity: 1; transform: translateY(0); }
+
+.floating-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: 0.4s;
+    transform-style: preserve-3d; 
+    perspective: 1000px;
+}
+
+.floating-card:hover { 
+    transform: translateY(-15px) scale(1.02) rotateX(5deg); 
+    box-shadow: 0 25px 50px rgba(106, 17, 203, 0.2); 
+}
+
+.floating-card h2 { font-size: 28px; margin-bottom: 15px; }
+
+/* Enhanced List Styling for Home Tab */
+.custom-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    color: #444;
+    font-size: 15px;
+    line-height: 1.6;
+    transition: transform 0.3s ease;
+}
+
+.custom-list li::before {
+    content: '\f00c'; /* Checkmark */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--success);
+    font-size: 16px;
+}
+
+.floating-card:hover .custom-list li {
+    transform: translateX(10px);
+}
+
+/* NEW: Split Layout for Research - ENHANCED FOR MATCHING HEIGHT & WIDTH */
+.research-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Changed from 0.10fr to 1fr to match width style */
+    gap: 30px;
+    align-items: stretch; /* Changed from flex-start to stretch to match heights */
+    margin-bottom: 50px;
+}
+
+/* Make the card inside the layout fill the height */
+.research-split-layout .card {
+    padding: 25px; 
+    margin-bottom: 0; 
+    height: 100%; /* Ensures card fills the stretched height */
+    box-sizing: border-box; /* Includes padding in height calculation */
+}
+
+/* Make the chart section fill the height as well */
+.chart-section {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 18px;
+    padding: 25px; 
+    margin-bottom: 0; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    height: 100%; /* Ensures chart section fills the stretched height */
+    box-sizing: border-box;
+}
+/* CHART STYLES */
+.chart-section {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 18px;
+    padding: 25px; /* Adjusted padding */
+    margin-bottom: 0; /* Removed margin for grid */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.chart-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px; /* Adjusted size */
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.chart-item {
+    margin-bottom: 15px; /* Adjusted margin */
+}
+
+.chart-question {
+    font-size: 13px; /* Adjusted size */
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bar-container {
+    background: #f0f2f5;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 22px; /* Adjusted height */
+    position: relative;
+    width: 100%;
+}
+
+.bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1e3c72, #2a5298); 
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    color: white;
+    font-size: 10px; /* Adjusted size */
+    font-weight: bold;
+    width: 0; 
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bar span {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards 1s;
+}
+
+/* KEY INSIGHTS */
+.key-insights-box {
+    background: linear-gradient(135deg, rgba(106, 17, 203, 0.08), rgba(233, 30, 99, 0.05));
+    border: 1px solid rgba(106, 17, 203, 0.2);
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 0;
+}
+
+.insight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.insight-icon {
+    min-width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+}
+
+
+/* HEXAGONAL_GUIDE STYLES */
+.hex-guide-section { background: rgba(255,255,255,0.95); border-radius: 20px; padding: 40px 20px; margin-bottom: 40px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+.hex-main-title { color: var(--dark); font-size: 28px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+.hex-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 600px; 
+    margin: 0 auto;
+}
+
+.hex {
+    position: absolute;
+    width: 180px; 
+    height: 207px;
+    background-color: white;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    left: 50%;
+    top: 50%;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform-style: preserve-3d;
+}
+
+.hex div { padding: 20px; }
+.hex:hover { transform: scale(1.1); z-index: 10; filter: brightness(1.1); box-shadow: 0 15px 30px rgba(0,0,0,0.25); }
+.hex h3 { font-size: 18px; margin-bottom: 5px; font-weight: 700; }
+.hex p { font-size: 13px; opacity: 0.9; margin: 0; line-height: 1.4; }
+
+.hex.center {
+    width: 220px;
+    height: 253px;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #0284c7, #0369a1); 
+    z-index: 2;
+}
+
+.hex.hex1 { transform: translate(-50%, -50%) translate(0, -200px); background: linear-gradient(135deg, #2575fc, #1d4ed8); }
+.hex.hex2 { transform: translate(-50%, -50%) translate(175px, -100px); background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.hex.hex3 { transform: translate(-50%, -50%) translate(175px, 100px); background: linear-gradient(135deg, #60a5fa, #3b82f6); }
+.hex.hex4 { transform: translate(-50%, -50%) translate(0, 200px); background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+.hex.hex5 { transform: translate(-50%, -50%) translate(-175px, 100px); background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.hex.hex6 { transform: translate(-50%, -50%) translate(-175px, -100px); background: linear-gradient(135deg, #60a5fa, #3b82f6); }
+
+@media (max-width: 768px) {
+    .hex-container { height: 550px; }
+    .hex { width: 120px; height: 138px; }
+    .hex div { padding: 10px; }
+    .hex h3 { font-size: 13px; }
+    .hex p { font-size: 10px; }
+    .hex.center { width: 140px; height: 161px; transform: translate(-50%, -50%) translate(0, 0); }
+    .hex.hex1 { transform: translate(-50%, -50%) translate(0, -120px); }
+    .hex.hex2 { transform: translate(-50%, -50%) translate(105px, -60px); }
+    .hex.hex3 { transform: translate(-50%, -50%) translate(105px, 60px); }
+    .hex.hex4 { transform: translate(-50%, -50%) translate(0, 120px); }
+    .hex.hex5 { transform: translate(-50%, -50%) translate(-105px, 60px); }
+    .hex.hex6 { transform: translate(-50%, -50%) translate(-105px, -60px); }
+}
+
+/* DO's AND DON'Ts */
+.tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
+.tip-card { padding: 25px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); transition: transform 0.3s; }
+.tip-card:hover { transform: translateY(-5px) rotateY(5deg); }
+.do-card { background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(240,255,240,0.98)); border-left: 6px solid var(--success); }
+.do-card h3 { color: var(--success); font-size: 24px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+.do-card ul li { margin-bottom: 12px; color: #333; list-style: none; position: relative; padding-left: 25px; }
+.do-card ul li::before { content: "✔️"; position: absolute; left: 0; }
+.dont-card { background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,240,240,0.98)); border-left: 6px solid var(--danger); }
+.dont-card h3 { color: var(--danger); font-size: 24px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+.dont-card ul li { margin-bottom: 12px; color: #333; list-style: none; position: relative; padding-left: 25px; }
+.dont-card ul li::before { content: "❌"; position: absolute; left: 0; }
+
+/* Safety Practices Modules */
+.safety-modules-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.safety-module-card {
+    background: rgba(255,255,255,0.98);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border-top: 5px solid transparent;
+}
+
+.safety-module-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.safety-module-card.security { border-top-color: var(--primary); }
+.safety-module-card.returns { border-top-color: var(--accent); }
+.safety-module-card.communication { border-top-color: var(--success); }
+
+.module-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.module-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+}
+
+.security .module-icon { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+.returns .module-icon { background: linear-gradient(135deg, var(--accent), #ff5722); }
+.communication .module-icon { background: linear-gradient(135deg, var(--success), #20c997); }
+
+.module-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+}
+
+.module-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.module-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    color: #555;
+    font-size: 14px;
+}
+
+.module-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+
+.security .module-list li::before { background-color: var(--primary); }
+.returns .module-list li::before { background-color: var(--accent); }
+.communication .module-list li::before { background-color: var(--success); }
+
+/* Case Studies Section */
+.case-study-section { margin-top: 40px; }
+.case-study-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
+.case-study-card { background: rgba(255,255,255,0.98); border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s; }
+.case-study-card:hover { transform: translateY(-5px); }
+.case-img { width: 100%; height: 200px; object-fit: cover; }
+.case-content { padding: 20px; }
+.case-tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+.tag-scam { background: #ffebee; color: #c62828; }
+.tag-success { background: #e8f5e9; color: #2e7d32; }
+.case-title { font-size: 18px; color: var(--dark); margin-bottom: 10px; }
+.case-desc { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 15px; }
+
+/* Real-Life Stories */
+.case-card { background: rgba(255,255,255,0.98); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-top: 5px solid #ddd; transition: 0.3s; }
+.case-card:hover { transform: translateY(-5px); }
+.case-card.scam { border-top-color: var(--danger); }
+.case-card.success { border-top-color: var(--success); }
+.case-header { padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #f0f0f0; }
+.case-icon { width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.scam .case-icon { background: #fff0f0; color: var(--danger); }
+.success .case-icon { background: #f0fff0; color: var(--success); }
+.case-title h3 { margin: 0; font-size: 18px; color: var(--dark); }
+.case-title span { font-size: 12px; color: #888; font-weight: normal; }
+.case-body { padding: 20px; }
+.case-body p { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 15px; }
+.case-lesson { background: #f8f9ff; padding: 10px 15px; border-radius: 8px; font-size: 13px; color: var(--primary); font-weight: 600; }
+
+/* MEDIA GALLERY */
+.featured-3d-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+    perspective: 1000px;
+    justify-content: center;
+}
+
+.featured-3d-card {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    background: #fff;
+}
+
+.featured-3d-card.left-card { transform: rotateY(15deg) rotateX(5deg); }
+.featured-3d-card.right-card { transform: rotateY(-15deg) rotateX(5deg); }
+
+.featured-3d-card:hover {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.05) translateZ(50px);
+    z-index: 10;
+    box-shadow: 0 30px 60px rgba(106, 17, 203, 0.4);
+}
+
+.featured-3d-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.featured-3d-card:hover img { transform: scale(1.1); }
+
+.featured-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px; color: white; text-align: center; font-weight: 600;
+}
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.mySlides { display: none; }
+.mySlides img { width: 100%; height: 450px; object-fit: cover; vertical-align: middle; }
+
+.prev, .next {
+    cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px;
+    margin-top: -22px; color: white; font-weight: bold; font-size: 18px;
+    transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none;
+    background: rgba(0,0,0,0.3);
+}
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
+
+.text {
+    color: #f2f2f2; font-size: 15px; padding: 8px 12px;
+    position: absolute; bottom: 8px; width: 100%; text-align: center;
+    background: rgba(0,0,0,0.5);
+}
+
+.dot-container { text-align: center; margin-top: 15px; }
+.dot {
+    cursor: pointer; height: 15px; width: 15px; margin: 0 2px;
+    background-color: #bbb; border-radius: 50%; display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.active, .dot:hover { background-color: var(--primary); }
+.fade { animation-name: fade; animation-duration: 1.5s; }
+@keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+/* SURVEY TAB */
+.form-container {
+    background: rgba(255,255,255,0.98);
+    border-radius: 18px;
+    padding: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+.form-iframe {
+    width: 100%;
+    height: 800px;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Poll Consolidated */
+.poll-consolidated-card {
+    background: rgba(255,255,255,0.98);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.poll-question-item {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+.poll-question-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+.poll-question-text {
+    font-size: 16px; font-weight: 600; color: var(--dark); margin-bottom: 15px;
+    display: flex; align-items: center; gap: 10px;
+}
+.poll-question-text i { color: var(--secondary); }
+
+.poll-buttons-row { display: flex; gap: 15px; }
+
+.poll-btn {
+    flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 8px 20px; border-radius: 20px; border: 2px solid transparent;
+    cursor: pointer; transition: 0.3s; font-family: inherit; font-size: 13px;
+    font-weight: 600; position: relative; overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.poll-btn.yes { background: #e8f5e9; border-color: #c8e6c9; color: #2e7d32; }
+.poll-btn.yes:hover { background: #c8e6c9; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(46, 125, 50, 0.2); }
+.poll-btn.no { background: #ffebee; border-color: #ffcdd2; color: #c62828; }
+.poll-btn.no:hover { background: #ffcdd2; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(198, 40, 40, 0.2); }
+.poll-btn.selected { transform: scale(1.05); border-width: 2px; }
+
+.poll-fill-abs { position: absolute; left: 0; top: 0; height: 100%; opacity: 0.1; transition: width 0.5s; z-index: 0; }
+.poll-btn.yes .poll-fill-abs { background: var(--success); }
+.poll-btn.no .poll-fill-abs { background: var(--danger); }
+.poll-btn span { position: relative; z-index: 1; }
+
+/* SUMMARY BUTTON STYLE */
+.btn-show-summary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    padding: 14px 32px;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+}
+.btn-show-summary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(106, 17, 203, 0.4);
+}
+
+/* RESULT SUMMARY CONTAINER */
+.result-summary-container {
+    display: none;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESULT CARDS LAYOUT */
+.result-cards-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.result-card-v2 {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.result-card-v2:hover { transform: translateY(-5px); }
+
+.result-card-v2.cod { background-color: #e8f5e9; border: 1px solid #c8e6c9; }
+.result-card-v2.prepaid { background-color: #fce4ec; border: 1px solid #f8bbd0; }
+.result-card-v2 h3 { font-size: 18px; margin: 0 0 15px 0; font-weight: 600; }
+.result-card-v2.cod h3 { color: #2e7d32; }
+.result-card-v2.prepaid h3 { color: #c62828; }
+
+.result-number { font-size: 64px; font-weight: 700; line-height: 1; }
+.result-card-v2.cod .result-number { color: #28a745; }
+.result-card-v2.prepaid .result-number { color: #dc3545; }
+
+
+/* FORUM TAB */
+.forum-header { text-align: center; margin-bottom: 40px; }
+
+/* RESOURCES TAB */
+.resource-section-title { font-size: 28px; color: #fff; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 2px solid rgba(255,255,255,0.3); display: flex; align-items: center; gap: 10px; justify-content: center; text-align: center; }
+.resource-section-title:first-child { margin-top: 0; }
+.resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.resource-card { background: rgba(255,255,255,0.98); border-radius: 15px; padding: 0; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: transform 0.3s; display: flex; flex-direction: column; }
+.resource-card:hover { transform: translateY(-5px); }
+.resource-icon-header { height: 80px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; }
+.bg-gov { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+.bg-help { background: linear-gradient(135deg, #d32f2f, #f44336); }
+.bg-learn { background: linear-gradient(135deg, #11998e, #38ef7d); }
+.resource-content { padding: 20px; flex: 1; }
+.resource-content h3 { margin: 0 0 10px 0; color: var(--dark); text-align: center; }
+.resource-list { list-style: none; padding: 0; margin: 0; }
+.resource-list li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+.resource-list li:last-child { border-bottom: none; }
+.resource-list a { text-decoration: none; color: var(--secondary); font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
+.resource-list a:hover { color: var(--primary); }
+
+/* CONTACT TAB - ENHANCED */
+.contact-card-wrapper {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: rgba(255,255,255,0.98);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.5);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), background 0.5s ease;
+    cursor: pointer;
+}
+
+.contact-card::before {
+    content: "";
+    position: absolute; top: 0; left: 0; width: 100%; height: 140px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    z-index: 0; border-radius: 0 0 50% 50%;
+    transform: translateZ(10px);
+    transition: background 0.5s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-15px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+    box-shadow: 30px 30px 60px rgba(106, 17, 203, 0.25);
+}
+
+.profile-img {
+    width: 170px; height: 170px; border-radius: 50%; object-fit: cover;
+    border: 6px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    margin-top: 40px; margin-bottom: 20px; position: relative; z-index: 1;
+    background-color: #fff; transition: transform 0.5s; transform: translateZ(30px);
+}
+
+.contact-card:hover .profile-img { transform: translateZ(50px) scale(1.05); }
+
+.contact-card h2 {
+    position: relative; z-index: 1; display: block; width: 100%;
+    text-align: center; justify-content: center; margin-bottom: 5px;
+    transform: translateZ(20px); transition: color 0.3s;
+}
+
+.contact-card .degree {
+    font-size: 14px; color: #666; margin-bottom: 10px; position: relative;
+    z-index: 1; font-weight: 500;
+}
+
+.contact-card .highlight {
+    font-size: 18px; font-weight: 700; color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 8px 20px; border-radius: 30px; display: inline-block;
+    margin-bottom: 20px; position: relative; z-index: 1;
+    box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3); transform: translateZ(15px);
+    transition: background 0.3s;
+}
+
+.contact-card p {
+    font-size: 16px; margin: 8px 0; color: #333; position: relative;
+    z-index: 1; transform: translateZ(10px);
+}
+.contact-card a { color: var(--secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+.social-links {
+    margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;
+    z-index: 1; position: relative;
+}
+.social-btn {
+    width: 45px; height: 45px; display: inline-flex; align-items: center;
+    justify-content: center; border-radius: 50%; font-size: 18px;
+    color: white; text-decoration: none; transition: transform 0.3s, opacity 0.3s;
+    margin: 0 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.social-btn:hover { transform: scale(1.2) translateZ(10px); opacity: 0.85; }
+.facebook { background: #1877F2; } .instagram { background: #E4405F; } .twitter { background: #1DA1F2; } .linkedin { background: #0A669C; } .youtube { background: #FF0000; }
+
+.qr-code-container {
+    margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee;
+    position: relative; z-index: 1;
+}
+.qr-code-img {
+    width: 120px; height: 120px; border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-top: 10px;
+    transition: transform 0.3s;
+}
+.qr-code-img:hover { transform: scale(1.1); }
+
+/* Alternate Color Class for Contact Card */
+.contact-card.alt-color { background: rgba(240, 244, 255, 0.98); }
+.contact-card.alt-color::before { background: linear-gradient(135deg, var(--success), #20c997); }
+.contact-card.alt-color h2 { color: var(--success); }
+.contact-card.alt-color .highlight { background: linear-gradient(135deg, var(--success), #20c997); }
+.contact-card.alt-color a { color: #20c997; }
+
+
+/* FLOATING CHATBOT BUTTON */
+.chat-float-btn { 
+    position: fixed; 
+    bottom: 25px; 
+    right: 25px; 
+    width: 65px; 
+    height: 65px; 
+    border-radius: 50%; 
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+    color: white; 
+    border: none; 
+    box-shadow: 0 8px 25px rgba(106, 17, 203, 0.5); 
+    cursor: pointer; 
+    font-size: 28px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    transition: 0.3s; 
+    z-index: 999; 
+    animation: pulse 2s infinite; 
+}
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(106, 17, 203, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(106, 17, 203, 0); } 100% { box-shadow: 0 0 0 0 rgba(106, 17, 203, 0); } }
+
+/* CHAT WINDOW STYLING */
+.chat-window { 
+    display: none; 
+    position: fixed; 
+    bottom: 100px; 
+    right: 25px; 
+    width: 350px; 
+    height: 500px; 
+    background: #f4f6fb; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 50px rgba(0,0,0,0.2); 
+    flex-direction: column; 
+    overflow: hidden; 
+    z-index: 1000; 
+    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    border: 1px solid #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+}
+.chat-window.active { display: flex; }
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* Chat Header */
+.chat-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.chat-header-info { display: flex; align-items: center; gap: 12px; }
+.chat-avatar { width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.chat-header h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.status-container { display: flex; align-items: center; gap: 6px; font-size: 12px; opacity: 0.9; }
+.status-dot { width: 8px; height: 8px; background-color: #25d366; border-radius: 50%; display: inline-block; }
+
+.close-chat { background: none; border: none; color: white; font-size: 20px; cursor: pointer; opacity: 0.8; transition: 0.3s; padding: 5px; }
+.close-chat:hover { opacity: 1; transform: rotate(90deg); }
+
+/* Chat Body */
+.chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f4f6fb;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Message Bubbles */
+.message {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.bot-msg {
+    background: white;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.user-msg {
+    background: var(--secondary);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 2px 5px rgba(37, 117, 252, 0.2);
+}
+
+/* Chat Footer */
+.chat-footer {
+    padding: 15px;
+    background: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid #eee;
+}
+
+#chatInput {
+    flex: 1;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+#chatInput:focus { border-color: var(--secondary); }
+
+.chat-send-btn {
+    width: 45px; height: 45px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.chat-send-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(37, 117, 252, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .corner-nav { padding: 8px; gap: 6px; }
+    .corner-nav-item { padding: 6px 12px; font-size: 11px; }
+    section { background-attachment: scroll; }
+    .poll-buttons-row { flex-direction: column; }
+    .mySlides img { height: 250px; }
+    .contact-card { transform: none !important; }
+    .contact-card:hover { transform: translateY(-10px) !important; }
+    .profile-img { transform: none !important; }
+    .contact-card .highlight, .contact-card p, .contact-card h2 { transform: none !important; }
+    .featured-3d-container { flex-direction: column; align-items: center; }
+    .featured-3d-card.left-card, .featured-3d-card.right-card { transform: none; }
+    .chat-window { width: 95%; right: 2.5%; bottom: 90px; height: 60vh; }
+    .result-cards-row { flex-direction: column; align-items: center; }
+    .result-card-v2 { min-width: 80%; }
+}/* PDF VIEWER STYLES - MATCHING CHART SECTION */
+.pdf-viewer-container {
+    background: rgba(255, 255, 255, 0.98); /* Matched chart-section background */
+    padding: 25px;                         /* Matched chart-section padding */
+    border-radius: 18px;                   /* Matched chart-section radius */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08); /* Matched shadow */
+    text-align: center;
+    margin-top: 40px;
+    /* Using the same sizing constraints as the chart section */
+    box-sizing: border-box; 
+}
+
+.pdf-frame {
+    width: 100%;             /* Changed from 90% to 100% to fill the container padding like charts */
+    height: 600px;           /* Adjusted height to match the visual weight of the chart section */
+    border: 1px solid #eee;  /* Subtle border */
+    border-radius: 10px;
+    background: #f5f5f5;
+    display: block;          /* Ensures no extra whitespace */
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP TEXT NAVIGATION -->
+<div class="corner-nav">
+    <a class="corner-nav-item active-icon" onclick="showTab('home')">Home</a>
+    <a class="corner-nav-item" onclick="showTab('research')">Research</a>
+    <a class="corner-nav-item" onclick="showTab('tips')">Awareness</a>
+    <a class="corner-nav-item" onclick="showTab('survey')">Survey</a>
+    <a class="corner-nav-item" onclick="showTab('gallery')">Media</a>
+    <a class="corner-nav-item" onclick="showTab('forum')">Forum</a>
+    <a class="corner-nav-item" onclick="showTab('resources')">Resources</a>
+    <a class="corner-nav-item" onclick="showTab('contact')">Contact</a>
+</div>
+
+<header>
+    <h1>Pay & Trust: Consumer Awareness Program</h1>
+    <p>Empowering Online Purchase Decisions</p>
+</header>
+
+<!-- HOME SECTION -->
+<section id="home" class="active-tab-section">
+    <div class="aura-bg"></div>
+    <div class="aura-orb orb-1"></div>
+    <div class="aura-orb orb-2"></div>
+    <div class="aura-orb orb-3"></div>
+
+    <div class="section-content">
+        <div class="hero-container">
+            <div class="scene-3d">
+                <div class="trust-core"><i class="fas fa-shield-alt"></i><span>TRUST</span></div>
+                <div class="orbit-ring orbit-1"></div>
+                <div class="orbit-ring orbit-2"></div>
+                <div class="orbit-item cod-item"><i class="fas fa-money-bill-wave"></i><span>COD</span></div>
+                <div class="orbit-item prepaid-item"><i class="fas fa-credit-card"></i><span>Prepaid</span></div>
+            </div>
+        </div>
+        
+        <div class="intro-grid">
+            <!-- INTRODUCTION CARD -->
+            <div class="floating-card scroll-animate is-visible" style="border-left: 5px solid var(--secondary);">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1000" alt="Trust Concept" style="width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                
+                <h2><i class="fas fa-book-open"></i> Introduction</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: #444;">
+                    The <strong style="color: var(--primary);">"Pay & Trust: Consumer Awareness Program on Online Purchase Methods"</strong> is an initiative designed to empower online shoppers with critical knowledge. In an era where e-commerce is ubiquitous, the choice between <strong style="color: var(--success);">Cash on Delivery (COD)</strong> and <strong style="color: var(--secondary);">Prepaid Orders</strong> significantly impacts consumer security and satisfaction. This project explores the dynamics of trust, highlighting that while COD offers a "pay only when satisfied" safety net, Prepaid orders offer convenience and discounts but require higher digital trust. Our goal is to bridge the gap between consumer hesitation and digital adoption through education and transparency.
+                </p>
+            </div>
+
+            <!-- OBJECTIVES CARD -->
+            <div class="floating-card scroll-animate is-visible">
+                <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project Objectives" style="width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+
+                <h2><i class="fas fa-crosshairs"></i> Objectives</h2>
+                <div class="objectives-grid">
+                    <div class="custom-list-container">
+                        <ul class="custom-list">
+                            <li><strong>Analyze Consumer Behavior:</strong> To study the psychological and financial reasons behind the preference for COD over Prepaid methods.</li>
+                            <li><strong>Identify Trust Barriers:</strong> To pinpoint specific factors (fraud risk, delivery reliability) that hinder trust in online payments.</li>
+                            <li><strong>Educate Stakeholders:</strong> To create awareness among consumers about safe payment practices and digital hygiene.</li>
+                            <li><strong>Propose Solutions:</strong> To suggest strategies for e-commerce platforms to enhance trust in Prepaid systems without alienating COD users.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCOPE CARD -->
+            <div class="floating-card scroll-animate is-visible" style="background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,244,255,0.95));">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Awareness Scope" style="width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+
+                <h2><i class="fas fa-expand-arrows-alt"></i> Scope</h2>
+                <div class="scope-grid">
+                    <div class="custom-list-container">
+                        <ul class="custom-list">
+                            <li><strong>Target Audience:</strong> The program targets diverse demographics, including students, homemakers, and elderly citizens new to digital commerce.</li>
+                            <li><strong>Area of Focus:</strong> Covers digital payment security, consumer grievance redressal mechanisms, and comparative analysis of refund policies.</li>
+                            <li><strong>Impact:</strong> Aiming to reduce cyber fraud incidents and increase the confidence of consumers in adopting digital payment methods.</li>
+                            <li><strong>Methodology:</strong> Utilizes surveys, interactive polls, and real-life case studies to disseminate information effectively.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RESEARCH SECTION -->
+<section id="research">
+    <div class="aura-bg"></div>
+    <div class="aura-orb orb-1"></div>
+    <div class="aura-orb orb-2"></div>
+    
+    <div class="section-content">
+        <div class="section-heading">
+            <h2><i class="fas fa-file-alt"></i> Research & Analysis</h2>
+            <p>Comprehensive study on consumer payment behavior</p>
+        </div>
+
+        <!-- SPLIT LAYOUT CONTAINER -->
+        <div class="research-split-layout">
+            <!-- ABSTRACT COLUMN -->
+            <div class="card">
+                <h2><i class="fas fa-file-alt"></i> Abstract Summary</h2>
+                <div class="abstract-box">
+                    <ul style="line-height: 1.8; color: #444; text-align: left; padding-left: 20px; margin: 0;">
+                        <li>The study compares <strong>Cash on Delivery (COD)</strong> and <strong>Prepaid Orders</strong> in e-commerce and retail businesses.</li>
+                        <li>COD is widely used in <strong>emerging markets</strong> due to low trust in online payments and limited access to digital payment systems.</li>
+                        <li>Prepaid orders are more common in <strong>digitally mature markets</strong> with established online payment infrastructure.</li>
+                        <li>The research analyzes key factors such as <strong>consumer behavior, operational efficiency, return rates, fraud risk, and cash flow management</strong>.</li>
+                        
+                       </ul>
+                </div>
+            </div>
+
+            <!-- CHARTS COLUMN -->
+            <div class="chart-section">
+                <div class="chart-title"><i class="fas fa-chart-bar"></i> Survey Results Analysis</div>
+                <div class="chart-item">
+                    <div class="chart-question">1. How often do you shop online...?</div>
+                    <div class="bar-container"><div class="bar" style="width: 65%;" data-value="65"><span>65% - Monthly</span></div></div>
+                </div>
+                <div class="chart-item">
+                    <div class="chart-question">2. Which mode of payment do you usually prefer...?</div>
+                    <div class="bar-container"><div class="bar" style="width: 58%;" data-value="58"><span>58% - COD</span></div></div>
+                </div>
+                <div class="chart-item">
+                    <div class="chart-question">3. How much do you trust on COD orders compared to prepaid orders...?</div>
+                    <div class="bar-container"><div class="bar" style="width: 72%;" data-value="72"><span>72% - High Trust</span></div></div>
+                </div>
+                <div class="chart-item">
+                    <div class="chart-question">4. What are your main reasons for choosing COD..?</div>
+                    <div class="bar-container"><div class="bar" style="width: 80%;" data-value="80"><span>80% - Security & Product Check</span></div></div>
+                </div>
+                <div class="chart-item">
+                    <div class="chart-question">5. How much do you trust prepaid orders compared to COD...?</div>
+                    <div class="bar-container"><div class="bar" style="width: 45%;" data-value="45"><span>45% - Moderate Trust</span></div></div>
+                </div>
+                <div class="chart-item">
+                    <div class="chart-question">6. What encourages you to choose prepaid orders....?</div>
+                    <div class="bar-container"><div class="bar" style="width: 88%;" data-value="88"><span>88% - Discounts & Offers</span></div></div>
+                </div>
+                <div class="chart-item">
+                    <div class="chart-question">7. Have you ever faced issues with prepaid orders..?</div>
+                    <div class="bar-container"><div class="bar" style="width: 30%;" data-value="30"><span>30% - Yes</span></div></div>
+                </div>
+                <div class="chart-item">
+                    <div class="chart-question">8. Which payment method do you trust more overall...?</div>
+                    <div class="bar-container"><div class="bar" style="width: 62%;" data-value="62"><span>62% - COD</span></div></div>
+                </div>
+                 <div class="chart-item">
+                    <div class="chart-question">9. What would increase your trust in cash on delivery...?</div>
+                    <div class="bar-container"><div class="bar" style="width: 62%;" data-value="62"><span>62% - COD</span></div></div>
+                </div>
+
+                <div class="chart-item" style="margin-bottom: 0;">
+                    <div class="chart-question">10. If COD was removed as an option, would you still shop online from the same platform...?</div>
+                    <div class="bar-container"><div class="bar" style="width: 40%;" data-value="40"><span>40% - No</span></div></div>
+                </div>
+            </div>
+        </div>
+        <!-- END SPLIT LAYOUT -->
+
+        <!-- KEY INSIGHTS -->
+        <div class="card">
+            <h2><i class="fas fa-lightbulb"></i> Key Insights</h2>
+            <div class="key-insights-box">
+                <div class="insight-item">
+                    <div class="insight-icon"><i class="fas fa-check"></i></div>
+                    <div><strong>Dominance of COD:</strong> Despite the rise of digital payments, 58% of users still prefer COD, primarily driven by the desire to verify products before payment.</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon"><i class="fas fa-percentage"></i></div>
+                    <div><strong>The Discount Factor:</strong> A massive 88% of users are motivated to choose Prepaid orders solely due to discounts and cashback offers, indicating price sensitivity.</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div><strong>Trust Gap:</strong> There is a significant "Trust Gap" (62% vs 45%) where users feel safer with COD. Platforms need to bridge this by offering "Open Box Delivery" or insurance.</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-icon"><i class="fas fa-store"></i></div>
+                    <div><strong>Customer Retention Risk:</strong> 40% of surveyed users stated they would abandon a platform if COD were removed, highlighting the risk of forcing digital payments.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdf-viewer-container">
+            <h2><i class="fas fa-file-pdf"></i> Full Research Paper</h2>
+            <!-- Updated to relative path 'sneha.pdf' -->
+            <iframe src="sneha.pdf" class="pdf-frame"></iframe>
+            <div class="fallback-note">
+                <!-- Updated to relative path 'sneha.pdf' and added download attribute -->
+                <a href="sneha.pdf" download="sneha.pdf" class="btn" style="margin-top: 10px;"><i class="fas fa-download"></i> Download PDF Locally</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MEDIA GALLERY SECTION -->
+<section id="gallery">
+    <div class="aura-bg"></div>
+    <div class="aura-orb orb-2"></div>
+    <div class="aura-orb orb-3"></div>
+
+    <div class="section-content">
+        <div class="section-heading">
+            <h2><i class="fas fa-photo-video"></i> Media Gallery</h2>
+            <p>A collection of awareness images and educational videos</p>
+        </div>
+
+        <div class="card">
+            <!-- 3D FEATURED IMAGES -->
+            <div class="featured-3d-container">
+                <div class="featured-3d-card left-card">
+                    <img src="https://i.pinimg.com/736x/aa/9f/e1/aa9fe11cdfda353503a319467c7c9cbf.jpg" alt="Trust Framework">
+                    <div class="featured-overlay">Payment Trust Framework</div>
+                </div>
+                <div class="featured-3d-card right-card">
+                    <img src="https://i.pinimg.com/1200x/8f/57/6d/8f576dc3c59860728f732a203ab7fa14.jpg" alt="Consumer Behavior">
+                    <div class="featured-overlay">Consumer Behavior Analysis</div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--primary); margin: 0 0 15px; text-align:center;"><i class="fas fa-images"></i> Awareness Posters</h3>
+            
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="https://i.pinimg.com/1200x/34/ee/f4/34eef43c290b5db516a664d4b8a7d7e1.jpg" alt="Awareness Poster 1">
+                    <div class="text">Awareness Poster 1</div>
+                </div>
+                <div class="mySlides fade">
+                    <img src="https://i.pinimg.com/736x/c1/0d/b5/c10db5f7e86aefb0f5ae7a27de934291.jpg" alt="Awareness Poster 2">
+                    <div class="text">Awareness Poster 2</div>
+                </div>
+                <div class="mySlides fade">
+                    <img src="https://admin.beta.indiaretailing.com/files/uploads/2019/08/Retail-Dynamics_COD_Zainab.jpg" alt="Retail Dynamics COD">
+                    <div class="text">Retail Dynamics COD</div>
+                </div>
+                <div class="mySlides fade">
+                    <img src="https://d38eiojdjahdit.cloudfront.net/pos_malaysia_article_cod_36b8b73b90.jpg" alt="COD Delivery Process">
+                    <div class="text">COD Delivery Process</div>
+                </div>
+                <div class="mySlides fade">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000" alt="Business Analytics">
+                    <div class="text">Business Analytics & Trust</div>
+                </div>
+                
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>
+            <div class="dot-container" style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span> <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span> <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+            </div>
+
+            <!-- Case Studies in Media Tab -->
+            <div class="case-study-section">
+                <h3 style="color: var(--primary); margin: 40px 0 15px; text-align:center;"><i class="fas fa-film"></i> REAL LIFE STORIES</h3>
+                <div class="case-study-grid">
+                    <div class="case-study-card">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600" alt="Phishing Scam" class="case-img">
+                        <div class="case-content">
+                            <span class="case-tag tag-scam">Scam Alert</span>
+                            <h4 class="case-title">The Fake Website Trap</h4>
+                            <p class="case-desc">A consumer paid upfront for a high-value item on a fake website mimicking a popular brand. The product never arrived.</p>
+                            <a href="https://youtu.be/SzftRFW_EM0" target="_blank" class="btn" style="font-size:12px; padding: 8px 15px;">Watch Video</a>
+                        </div>
+                    </div>
+                    <div class="case-study-card">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600" alt="Safe Shopping" class="case-img">
+                        <div class="case-content">
+                            <span class="case-tag tag-success">Success Story</span>
+                            <h4 class="case-title">Verified Vendor Victory</h4>
+                            <p class="case-desc">By choosing a verified vendor with secure payment gateway, a customer received a refund swiftly when the product was damaged.</p>
+                            <a href="https://youtu.be/xhlhV_Z21BI" target="_blank" class="btn" style="font-size:12px; padding: 8px 15px;">Watch Story</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+</section>
+
+<!-- AWARENESS TIPS SECTION -->
+<section id="tips">
+    <div class="aura-bg"></div>
+    <div class="aura-orb orb-1"></div>
+    <div class="aura-orb orb-3"></div>
+
+    <div class="section-content">
+        <div class="section-heading">
+            <h2><i class="fas fa-lightbulb"></i> Awareness Tips</h2>
+            <p>Essential safety guidelines for online shopping</p>
+        </div>
+
+        <!-- HEXAGON FLOW SECTION -->
+        <div class="hex-guide-section">
+            <h2 class="hex-main-title">step by step guides</h2>
+            
+            <div class="hex-container">
+                <div class="hex center"><div><h3>Payment Trust Analysis</h3><p>Understanding Customer Payment Preferences</p></div></div>
+                <div class="hex hex1"><div><h3>1. Trust Factors</h3><p>Security, brand reputation, and transparency drive payment choices.</p></div></div>
+                <div class="hex hex2"><div><h3>2. Customer Psychology</h3><p>Risk perception and control influence COD preference.</p></div></div>
+                <div class="hex hex3"><div><h3>3. Demographic Patterns</h3><p>Age, location, and income affect payment preferences.</p></div></div>
+                <div class="hex hex4"><div><h3>4. Business Impact</h3><p>Return rates, cash flow, and operational costs vary by method.</p></div></div>
+                <div class="hex hex5"><div><h3>5. Technology Role</h3><p>UPI, digital wallets, and secure gateways enable prepaid adoption.</p></div></div>
+                <div class="hex hex6"><div><h3>6. Future Trends</h3><p>BNPL, crypto payments, and AI-driven fraud detection.</p></div></div>
+            </div>
+        </div>
+
+        <div class="card"><h2><i class="fas fa-lightbulb"></i> Safety Do's and Don'ts</h2></div>
+        <div class="tips-grid">
+            <div class="tip-card do-card">
+                <h3><i class="fas fa-check-circle"></i> DO's</h3>
+                <ul>
+                    <li><strong>Verify the Seller:</strong> Always check ratings and reviews before placing an order.</li>
+                    <li><strong>Check for HTTPS:</strong> Ensure the website URL starts with https://.</li>
+                    <li><strong>Keep Records:</strong> Save screenshots of orders and payment confirmations.</li>
+                    <li><strong>Inspect on Delivery:</strong> For COD, inspect the package condition before paying.</li>
+                </ul>
+            </div>
+            <div class="tip-card dont-card">
+                <h3><i class="fas fa-times-circle"></i> DON'Ts</h3>
+                <ul>
+                    <li><strong>Share OTP:</strong> Never share your One Time Password with anyone.</li>
+                    <li><strong>Click Suspicious Links:</strong> Avoid clicking on links from unknown sources.</li>
+                    <li><strong>Save Card Details:</strong> Do not save card details on shared devices.</li>
+                    <li><strong>Trust Unrealistic Deals:</strong> If it looks too good to be true, it's a scam.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SAFETY PRACTICES - MODULES STYLE -->
+        <div class="card">
+            <h2><i class="fas fa-shield-alt"></i> Safety Practices</h2>
+            <p>Essential security measures to protect your money and data.</p>
+            
+            <div class="safety-modules-container">
+                <div class="safety-module-card security">
+                    <div class="module-header">
+                        <div class="module-icon"><i class="fas fa-lock"></i></div>
+                        <h3 class="module-title">Security Best Practices</h3>
+                    </div>
+                    <ul class="module-list">
+                        <li>Use PCI DSS compliant payment gateways.</li>
+                        <li>Enable 3D Secure authentication for cards.</li>
+                        <li>Display security certificates (SSL/TLS).</li>
+                        <li>Use strong, unique passwords for accounts.</li>
+                    </ul>
+                </div>
+
+                <div class="safety-module-card returns">
+                    <div class="module-header">
+                        <div class="module-icon"><i class="fas fa-undo-alt"></i></div>
+                        <h3 class="module-title">Return & Refund Policies</h3>
+                    </div>
+                    <ul class="module-list">
+                        <li>Offer 7-14 days hassle-free returns.</li>
+                        <li>Process refunds within 3-5 business days.</li>
+                        <li>Communicate policy clearly before payment.</li>
+                        <li>Provide prepaid return labels for convenience.</li>
+                    </ul>
+                </div>
+
+                <div class="safety-module-card communication">
+                    <div class="module-header">
+                        <div class="module-icon"><i class="fas fa-comments"></i></div>
+                        <h3 class="module-title">Customer Communication</h3>
+                    </div>
+                    <ul class="module-list">
+                        <li>Send instant order confirmation emails.</li>
+                        <li>Provide real-time tracking updates.</li>
+                        <li>Transparent communication on delays.</li>
+                        <li>24/7 support for payment issues.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- AWARENESS VIDEO SECTION -->
+        <div class="card">
+            <h2><i class="fas fa-video"></i> Payment Safety Awareness</h2>
+            
+            <!-- ADDED IMAGE -->
+            <img src="https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=1000" alt="Payment Safety Awareness" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+            
+            <p style="text-align: center; margin-bottom: 20px;">This video case study explores real-world scenarios of customer trust, analyzing why buyers prefer specific payment methods and how trust is built or broken in online transactions..</p>
+            <div style="text-align: center;">
+                <a href="https://youtu.be/xhlhV_Z21BI" target="_blank" class="btn"><i class="fas fa-play-circle"></i> Watch Awareness Video</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SURVEY SECTION -->
+<section id="survey">
+    <div class="aura-bg"></div>
+    <div class="aura-orb orb-1"></div>
+    <div class="aura-orb orb-2"></div>
+
+    <div class="section-content">
+        <div class="section-heading">
+            <h2><i class="fas fa-poll"></i> Surveys & Polls</h2>
+            <p>Participate in our research to improve online safety</p>
+        </div>
+
+        <!-- MAIN SURVEY FORM RESTORED -->
+        <div class="card">
+            <h2><i class="fas fa-file-alt"></i> Main Survey</h2>
+            <p style="margin-bottom: 15px;">Please fill out our detailed survey form embedded below:</p>
+            <div class="form-container">
+                <iframe src="https://docs.google.com/forms/d/1BITDdLU06EljMjxFRGXg1poTwvubCeEvYfMoZFcoY8c/viewform?embedded=true" class="form-iframe">Loading…</iframe>
+            </div>
+        </div>
+
+        <div class="poll-consolidated-card">
+            <h2 style="margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 15px;"><i class="fas fa-poll"></i> Quick Polls</h2>
+            
+            <!-- Poll Questions Wrapper -->
+            <div id="pollQuestionsWrapper">
+                <div class="poll-question-item">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 1. Do you prefer COD for high-value items?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" data-count="cod" onclick="vote(this, 'poll1', 'yes')"><div class="poll-fill-abs" id="fill-poll1-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" data-count="prepaid" onclick="vote(this, 'poll1', 'no')"><div class="poll-fill-abs" id="fill-poll1-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="poll-question-item">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 2. Have you ever been scammed on a Prepaid order?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" onclick="vote(this, 'poll2', 'yes')"><div class="poll-fill-abs" id="fill-poll2-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" onclick="vote(this, 'poll2', 'no')"><div class="poll-fill-abs" id="fill-poll2-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="poll-question-item">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 3. Does "Cash on Delivery" increase your trust in new websites?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" data-count="cod" onclick="vote(this, 'poll3', 'yes')"><div class="poll-fill-abs" id="fill-poll3-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" data-count="prepaid" onclick="vote(this, 'poll3', 'no')"><div class="poll-fill-abs" id="fill-poll3-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="poll-question-item">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 4. Do you think Prepaid orders are processed faster?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" data-count="prepaid" onclick="vote(this, 'poll4', 'yes')"><div class="poll-fill-abs" id="fill-poll4-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" data-count="cod" onclick="vote(this, 'poll4', 'no')"><div class="poll-fill-abs" id="fill-poll4-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="poll-question-item">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 5. Have you ever refused to accept a COD package?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" onclick="vote(this, 'poll5', 'yes')"><div class="poll-fill-abs" id="fill-poll5-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" onclick="vote(this, 'poll5', 'no')"><div class="poll-fill-abs" id="fill-poll5-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="poll-question-item">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 6. Do you save your card details on shopping apps?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" data-count="prepaid" onclick="vote(this, 'poll6', 'yes')"><div class="poll-fill-abs" id="fill-poll6-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" data-count="cod" onclick="vote(this, 'poll6', 'no')"><div class="poll-fill-abs" id="fill-poll6-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="poll-question-item">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 7. Do you check for SSL/HTTPS before paying online?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" onclick="vote(this, 'poll7', 'yes')"><div class="poll-fill-abs" id="fill-poll7-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" onclick="vote(this, 'poll7', 'no')"><div class="poll-fill-abs" id="fill-poll7-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="poll-question-item">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 8. Would you trust a social media ad that only accepts Prepaid?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" data-count="prepaid" onclick="vote(this, 'poll8', 'yes')"><div class="poll-fill-abs" id="fill-poll8-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" data-count="cod" onclick="vote(this, 'poll8', 'no')"><div class="poll-fill-abs" id="fill-poll8-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="poll-question-item">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 9. Do you feel refunds are faster for Prepaid orders?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" data-count="prepaid" onclick="vote(this, 'poll9', 'yes')"><div class="poll-fill-abs" id="fill-poll9-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" data-count="cod" onclick="vote(this, 'poll9', 'no')"><div class="poll-fill-abs" id="fill-poll9-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="poll-question-item" style="border-bottom: none;">
+                    <div class="poll-question-text"><i class="fas fa-question-circle"></i> 10. Is digital payment trust the main reason you avoid COD?</div>
+                    <div class="poll-buttons-row">
+                        <button class="poll-btn yes" data-count="prepaid" onclick="vote(this, 'poll10', 'yes')"><div class="poll-fill-abs" id="fill-poll10-yes"></div><span>Yes</span><i class="fas fa-check"></i></button>
+                        <button class="poll-btn no" data-count="cod" onclick="vote(this, 'poll10', 'no')"><div class="poll-fill-abs" id="fill-poll10-no"></div><span>No</span><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SHOW FINAL SUMMARY BUTTON -->
+            <div id="summaryBtnContainer" style="text-align: center;">
+                <button class="btn-show-summary" onclick="showFinalSummary()">
+                    <i class="fas fa-file-alt"></i> Show Final Summary
+                </button>
+            </div>
+
+            <!-- RESULT SUMMARY VIEW -->
+            <div id="pollResultsView" class="result-summary-container">
+                <h3 style="text-align: center; color: var(--dark); font-size: 24px; margin-bottom: 10px;">Survey Result Summary</h3>
+                <p style="text-align: center; color: #666; margin-bottom: 10px;">Based on user participation</p>
+                
+                <div class="result-cards-row">
+                    <div class="result-card-v2 cod">
+                        <h3>Total COD Votes</h3>
+                        <div class="result-number" id="totalCODCount">0</div>
+                    </div>
+                    <div class="result-card-v2 prepaid">
+                        <h3>Total Prepaid Votes</h3>
+                        <div class="result-number" id="totalPrepaidCount">0</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn" onclick="backToPolls()" style="background: linear-gradient(135deg, #6a11cb, #2575fc);"><i class="fas fa-arrow-left"></i> Back to Polls</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- COMMUNITY FORUM SECTION -->
+<section id="forum">
+    <div class="aura-bg"></div>
+    <div class="aura-orb orb-3"></div>
+    <div class="aura-orb orb-1"></div>
+
+    <div class="section-content">
+        <div class="section-heading">
+            <h2><i class="fas fa-comments"></i> Community Forum</h2>
+            <p>Join the discussion and share your experiences</p>
+        </div>
+
+        <div class="pdf-viewer-container">
+            <h2><i class="fas fa-blog"></i> Project Blog</h2>
+            <iframe src="https://snehacep.blogspot.com/2026/02/customer-trust-on-cash-on-delivery-vs.html" class="pdf-frame"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- RESOURCES SECTION -->
+<section id="resources">
+    <div class="aura-bg"></div>
+    <div class="aura-orb orb-2"></div>
+    <div class="aura-orb orb-3"></div>
+
+    <div class="section-content">
+        <div class="section-heading">
+            <h2><i class="fas fa-book"></i> Resources</h2>
+            <p>Important links and contact information</p>
+        </div>
+
+        <h2 class="resource-section-title"><i class="fas fa-landmark"></i> Government Portals</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="resource-icon-header bg-gov"><i class="fas fa-university"></i></div>
+                <div class="resource-content">
+                    <h3>Consumer Affairs</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://consumerhelpline.gov.in/" target="_blank">National Consumer Helpline <i class="fas fa-external-link-alt"></i></a></li>
+                        <li><a href="https://www.consumercourt.in/" target="_blank">Consumer Court Forum <i class="fas fa-external-link-alt"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="resource-section-title"><i class="fas fa-phone-alt"></i> Helplines</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="resource-icon-header bg-help"><i class="fas fa-ambulance"></i></div>
+                <div class="resource-content">
+                    <h3>Emergency Contacts</h3>
+                    <ul class="resource-list">
+                        <li><a href="tel:1930">Cyber Crime: 1930</a></li>
+                        <li><a href="tel:112">Emergency Services: 112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="resource-section-title"><i class="fas fa-book-reader"></i> Learning Resources</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="resource-icon-header bg-learn"><i class="fas fa-laptop-code"></i></div>
+                <div class="resource-content">
+                    <h3>Digital Safety Guides</h3>
+                    <ul class="resource-list">
+                        <li><a href="https://www.cybercrime.gov.in/" target="_blank">Cyber Crime Portal Guide <i class="fas fa-external-link-alt"></i></a></li>
+                        <li><a href="https://www.meity.gov.in/content/cyber-security" target="_blank">Ministry of IT Resources <i class="fas fa-external-link-alt"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <div class="aura-bg"></div>
+    <div class="aura-orb orb-1"></div>
+    <div class="aura-orb orb-2"></div>
+
+    <div class="section-content">
+        <div class="section-heading">
+            <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+            <p>Get in touch with the project coordinator</p>
+        </div>
+
+        <div class="contact-card-wrapper">
+            <div class="contact-card" onclick="toggleContactColor(this)">
+                <img src="https://z-cdn-media.chatglm.cn/files/f085dee9-4683-4641-95ab-a69bf2c473bb.png?auth_key=1872361674-b3d80ea9f54547fbb1736163ca10f8d4-0-57b80eb8489e7c74bc35f211174f8c8a" alt="Goli Sneha Naresh" class="profile-img">
+                <h2>Goli Sneha Naresh</h2>
+                <div class="highlight">Bachelor of Science in Information Technology</div>
+                <p>📞 +91 9545 844 969</p>
+                <p>📧 <a href="mailto:sneha42@gmail.com">sneha42@gmail.com</a></p>
+                <div class="social-links">
+                    <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="qr-code-container">
+                    <p style="font-size: 14px; margin-bottom: 5px; color: #666;">Scan for Contact</p>
+                    <img src="https://z-cdn-media.chatglm.cn/files/1f44e00b-150e-4de6-82ba-c7330ce60a49.png?auth_key=1872362707-a77c429cb0fe448ab0cf1874be52a6b0-0-0f8066bc956be8d81e2249bceb9223ff" alt="Contact QR Code" class="qr-code-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FLOATING CHATBOT -->
+<button class="chat-float-btn" onclick="toggleChat()"><i class="fas fa-comment-dots"></i></button>
+<div id="chatWindow" class="chat-window">
+    <div class="chat-header">
+        <div class="chat-header-info">
+            <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+            <div>
+                <h3>Payment Trust Assistant</h3>
+                <div class="status-container"><span class="status-dot"></span> Online</div>
+            </div>
+        </div>
+        <button class="close-chat" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="chatBody" class="chat-body"></div>
+    <div class="chat-footer">
+        <input type="text" id="chatInput" placeholder="Ask about payment trust..." onkeypress="handleEnter(event)">
+        <button class="chat-send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<script>
+/* Tab Logic */
+function showTab(targetId) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => { section.classList.remove('active-tab-section'); });
+    const targetSection = document.getElementById(targetId);
+    if(targetSection) {
+        targetSection.offsetWidth; 
+        targetSection.classList.add('active-tab-section');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if(targetId === 'research') { animateCharts(); }
+    }
+    const navButtons = document.querySelectorAll('.corner-nav-item');
+    navButtons.forEach(btn => {
+        btn.classList.remove('active-icon');
+        if(btn.getAttribute('onclick').includes(`'${targetId}'`)) { btn.classList.add('active-icon'); }
+    });
+}
+
+/* Chart Animation Logic */
+function animateCharts() {
+    const bars = document.querySelectorAll('.bar');
+    bars.forEach(bar => {
+        const width = bar.getAttribute('data-value');
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = width + '%'; }, 100);
+    });
+}
+
+/* FLOATING CHATBOT LOGIC */
+const chatBody = document.getElementById('chatBody');
+const chatInput = document.getElementById('chatInput');
+
+window.onload = function() { 
+    addBotMessage("Hi! I'm your Payment Trust Assistant. Ask me anything about COD vs Prepaid payments, customer trust factors, e - commerce strategies, or our research findings!", 'bot'); 
+    showSlides(1); 
+}; 
+
+function toggleChat() { document.getElementById('chatWindow').classList.toggle('active'); }
+function handleEnter(e) { if (e.key === 'Enter') sendMessage(); }
+
+function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    addUserMessage(text, 'user');
+    chatInput.value = "";
+    setTimeout(() => {
+        const response = getBotResponse(text);
+        addBotMessage(response, 'bot');
+    }, 800);
+}
+
+function getBotResponse(text) {
+    const msg = text.toLowerCase();
+    let response = "I can help with topics like COD, Prepaid, and Scams. 😊";
+    if (msg.includes("cod")) response = "COD is safer for new websites because you pay only when you receive the item. 💰";
+    else if (msg.includes("scam")) response = "If you suspect a scam, call the Cyber Crime Helpline at 1930 immediately. 🚨";
+    else if (msg.includes("prepaid")) response = "Prepaid is convenient and often offers discounts, but ensure the site is trusted! 🔒";
+    else if (msg.includes("hello") || msg.includes("hi")) response = "Hi there! How can I help you stay safe while shopping today? 👋";
+    else if (msg.includes("refund")) response = "Refunds are usually faster for prepaid orders, going back to the source account. COD refunds might take longer or be in wallet credits. ⏳";
+    return response;
+}
+
+function addUserMessage(text, type) { 
+    const div = document.createElement('div'); 
+    div.className = 'message user-msg'; 
+    div.innerHTML = text; 
+    chatBody.appendChild(div); 
+    chatBody.scrollTop = chatBody.scrollHeight; 
+}
+
+function addBotMessage(text, type) { 
+    const div = document.createElement('div'); 
+    div.className = 'message bot-msg'; 
+    div.innerHTML = text; 
+    chatBody.appendChild(div); 
+    chatBody.scrollTop = chatBody.scrollHeight; 
+}
+
+/* Poll Logic with Counters */
+let totalCODVotes = 0;
+let totalPrepaidVotes = 0;
+
+function vote(btnElement, pollId, choice) {
+    const fill = document.getElementById(`fill-${pollId}-${choice}`);
+    const parent = btnElement.parentElement;
+    const buttons = parent.querySelectorAll('.poll-btn');
+    
+    if(btnElement.classList.contains('selected')) return;
+
+    buttons.forEach(b => {
+         b.classList.remove('selected');
+         const f = b.querySelector('.poll-fill-abs');
+         if(f) f.style.width = '0%';
+    });
+    
+    btnElement.classList.add('selected');
+    fill.style.width = '100%';
+
+    const voteType = btnElement.getAttribute('data-count');
+    if(voteType === 'cod') {
+        totalCODVotes++;
+    } else if(voteType === 'prepaid') {
+        totalPrepaidVotes++;
+    }
+    
+    document.getElementById('totalCODCount').innerText = totalCODVotes;
+    document.getElementById('totalPrepaidCount').innerText = totalPrepaidVotes;
+}
+
+/* Summary Logic */
+function showFinalSummary() {
+    document.getElementById('pollQuestionsWrapper').style.display = 'none';
+    document.getElementById('summaryBtnContainer').style.display = 'none';
+    const resultsView = document.getElementById('pollResultsView');
+    resultsView.style.display = 'block';
+}
+
+function backToPolls() {
+    document.getElementById('pollResultsView').style.display = 'none';
+    document.getElementById('pollQuestionsWrapper').style.display = 'block';
+    document.getElementById('summaryBtnContainer').style.display = 'block';
+}
+
+/* Contact Color Change Logic */
+function toggleContactColor(element) {
+    element.classList.toggle('alt-color');
+}
+
+/* Slideshow Logic */
+let slideIndex = 1;
+let slideTimer;
+
+function plusSlides(n) { clearTimeout(slideTimer); showSlides(slideIndex += n); }
+function currentSlide(n) { clearTimeout(slideTimer); showSlides(slideIndex = n); }
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+    for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
+    if (slides.length > 0) {
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        slideTimer = setTimeout(() => plusSlides(1), 4000);
+    }
+}
+</script>
+
+</body>
+</html>
